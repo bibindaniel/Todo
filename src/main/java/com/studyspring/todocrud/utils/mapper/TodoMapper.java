@@ -13,6 +13,7 @@ public class TodoMapper {
         todo.setTitle(todoDto.getTitle());
         todo.setDescription(todoDto.getDescription());
         todo.setDate(todoDto.getDate());
+//        todo.setUserId(todoDto.getUserId());
         return todo;
     }
 
@@ -22,6 +23,7 @@ public class TodoMapper {
        todoDto.setTitle(todo.getTitle());
        todoDto.setDescription(todo.getDescription());
        todoDto.setDate(todo.getDate());
+//       todoDto.setUserId(todo.getUserId());
        return todoDto;
     }
 }

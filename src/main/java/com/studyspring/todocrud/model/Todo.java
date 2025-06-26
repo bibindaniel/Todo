@@ -1,20 +1,19 @@
 package com.studyspring.todocrud.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-
+import jakarta.persistence.*;
 
 
 @Entity
+@Table(name = "todo")
 public class Todo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "title",nullable = false,length = 100)
     private String title;
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
+    @Column(name="date", length = 50)
     private String date;
 
     public int getId() {
