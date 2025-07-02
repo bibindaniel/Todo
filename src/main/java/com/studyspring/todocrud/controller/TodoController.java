@@ -22,35 +22,35 @@ public class TodoController {
     }
 
     @PostMapping
-    public ResponseEntity<?> addTodo(@Valid @RequestBody TodoDto todoDto) {
+    public ResponseEntity<TodoDto> addTodo(@Valid @RequestBody TodoDto todoDto) {
         todoDto.setId(0);
-        TodoDto saved = todoService.addTodo(todoDto);
-        return new ResponseEntity<>(saved, HttpStatus.CREATED);
+        TodoDto savedDto = todoService.addTodo(todoDto);
+        return new ResponseEntity<>(savedDto, HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<?> getAllTodos() {
+    public ResponseEntity<List<TodoDto>> getAllTodos() {
         List<TodoDto> todos = todoService.getAllTodo();
         return new ResponseEntity<>(todos, HttpStatus.OK);
 
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getTodo(@PathVariable int id) {
-        TodoDto todo = todoService.getTodo(id);
-        return new ResponseEntity<>(todo, HttpStatus.OK);
+    public ResponseEntity<TodoDto> getTodo(@PathVariable int id) {
+        TodoDto todoDto = todoService.getTodo(id);
+        return new ResponseEntity<>(todoDto, HttpStatus.OK);
 
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateTodo(@PathVariable int id, @Valid @RequestBody TodoDto todoDto) {
+    public ResponseEntity<TodoDto> updateTodo(@PathVariable int id, @Valid @RequestBody TodoDto todoDto) {
         todoDto.setId(0);
-        TodoDto updated = todoService.updateTodo(id, todoDto);
-        return new ResponseEntity<>(updated, HttpStatus.OK);
+        TodoDto updatedDto = todoService.updateTodo(id, todoDto);
+        return new ResponseEntity<>(updatedDto, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteTodo(@PathVariable int id) {
+    public ResponseEntity<TodoDto> deleteTodo(@PathVariable int id) {
         todoService.deleteTodo(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 

@@ -1,12 +1,6 @@
 package com.studyspring.todocrud.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-
-
+import jakarta.persistence.*;
 
 @Entity
 public class Todo {
@@ -16,6 +10,10 @@ public class Todo {
     private String title;
     private String description;
     private String date;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     public int getId() {
         return id;
@@ -47,5 +45,13 @@ public class Todo {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
